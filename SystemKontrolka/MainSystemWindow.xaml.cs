@@ -70,5 +70,10 @@ namespace SystemKontrolka
             var users = await _kontrolkaDbContext.Users.ToListAsync();
             UsersDataGrid.ItemsSource = users;
         }
+
+        private void Window_Closed()
+        {
+
+        }
     }
 }

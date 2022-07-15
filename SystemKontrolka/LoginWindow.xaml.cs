@@ -71,6 +71,10 @@ namespace SystemKontrolka
             }
         }
 
-        
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            // exit application
+            Application.Current.Shutdown();
+        }
     }
 }
