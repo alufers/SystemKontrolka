@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SystemKontrolka.Models;
 using SystemKontrolka.Services;
 
 namespace SystemKontrolka
@@ -25,12 +26,27 @@ namespace SystemKontrolka
         private readonly IServiceProvider _serviceProvider;
         private readonly AddUserWindow _addUserWindow;
         private readonly KontrolkaDbContext _kontrolkaDbContext;
+        private User _user;
+        
         public MainSystemWindow(IServiceProvider serviceProvider, AddUserWindow addUserWindow, KontrolkaDbContext kontrolkaDbContext)
         {
             _serviceProvider = serviceProvider;
             _addUserWindow = addUserWindow;
             _kontrolkaDbContext = kontrolkaDbContext;
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Sets up the window for the given user and shows it.
+        /// </summary>
+        /// <param name="user"></param>
+        public void LoginAndShow(User user)
+        {
+            _user = user;
+
+            LoggedInLabel.Content =
+                $"Zalogowany jako: {_user.Username}";
+            Show();
         }
 
 
@@ -41,8 +57,8 @@ namespace SystemKontrolka
         /// <param name="e"></param>
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
-            _serviceProvider.GetService<LoginWindow>().Show();
             Hide();
+            Application.Current.Shutdown();
         }
 
         private void AddUserButton_Click(object sender, RoutedEventArgs e)
@@ -71,9 +87,9 @@ namespace SystemKontrolka
             UsersDataGrid.ItemsSource = users;
         }
 
-        private void Window_Closed()
+        private void Window_Closed(object sender, EventArgs e)
         {
-
+            Application.Current.Shutdown();
         }
     }
 }

@@ -1,16 +1,47 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SystemKontrolka.Models;
 
 namespace SystemKontrolka.Services
 {
-    internal class DbLoginService:ILoginService
+    
+    /// <summary>
+    /// Database backed login service
+    /// </summary>
+    internal class DbLoginService : ILoginService
     {
-        public async Task<bool> CheckUserCredentials(string user, string password)
+        private readonly KontrolkaDbContext _kontrolkaDbContext;
+        public DbLoginService(KontrolkaDbContext kontrolkaDbContext)
         {
-            return user == "admin" && password == "admin";
+            _kontrolkaDbContext = kontrolkaDbContext;
+        }
+        public async Task<User> CheckUserCredentials(string user, string password)
+        {
+            return await _kontrolkaDbContext.Users.FirstOrDefaultAsync(u => u.Username == user && u.Password == password);
+        }
+
+        public async Task<bool> CreateAdminUserIfNone()
+        {
+            if (_kontrolkaDbContext.Users.Count() == 0)
+            {
+                var adminUser = new User
+                {
+                    Username = "admin",
+                    Password = "admin",
+                    CanEditDefectTypes = true,
+                    CanEditParts = true,
+                    CanEditReports = true,
+                    CanEditUsers = true,
+                };
+                _kontrolkaDbContext.Users.Add(adminUser);
+                await _kontrolkaDbContext.SaveChangesAsync();
+                return true;
+            }
+            return false;
         }
     }
 }

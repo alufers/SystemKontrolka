@@ -58,12 +58,19 @@ namespace SystemKontrolka
             DoLogin();
         }
 
+        /// <summary>
+        /// Performs the actual login action
+        /// </summary>
+        /// <returns></returns>
         private async Task DoLogin()
         {
-            if (await _loginService.CheckUserCredentials(login.Text, password.Password))
+            var user = await _loginService.CheckUserCredentials(login.Text, password.Password);
+            if (user != null)
             {
+                login.Text = "";
+                password.Password = "";
                 Hide();
-                _mainSystemWindow.Show();
+                _mainSystemWindow.LoginAndShow(user);
             }
             else
             {
@@ -71,10 +78,37 @@ namespace SystemKontrolka
             }
         }
 
+        /// <summary>
+        /// Handles application exit
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Closed(object sender, EventArgs e)
         {
             // exit application
             Application.Current.Shutdown();
+        }
+
+        /// <summary>
+        /// Checks if there are any users, and if not creates a default admin account.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Window_Initialized(object sender, EventArgs e)
+        {
+            CheckAdminAccount();
+        }
+        
+        /// <summary>
+        /// Checks if there are any users, and if not creates a default admin account.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async Task CheckAdminAccount() {
+            if (await _loginService.CreateAdminUserIfNone())
+            {
+                MessageBox.Show("Utworzono konto administratora: admin/admin");
+            }
         }
     }
 }

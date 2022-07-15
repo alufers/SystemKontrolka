@@ -29,8 +29,8 @@ namespace SystemKontrolka
         /// <param name="services"></param>
         private void ConfigureServices(ServiceCollection services)
         {
-            services.AddScoped<ILoginService, DbLoginService>();
-            
+
+
             services.AddSingleton<LoginWindow>();
             services.AddSingleton<MainSystemWindow>();
             services.AddSingleton<AddUserWindow>();
@@ -41,8 +41,10 @@ namespace SystemKontrolka
             {
                 options.UseSqlite("Data Source = Kontrolka.db");
             });
+
+            services.AddScoped<ILoginService, DbLoginService>();
         }
-        
+
         /// <summary>
         /// An event handler for application startup
         /// </summary>
