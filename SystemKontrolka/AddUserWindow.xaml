@@ -1,0 +1,43 @@
+﻿<Window x:Class="SystemKontrolka.AddUserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SystemKontrolka"
+        mc:Ignorable="d"
+        Title="Kontrolka - dodawanie użytkownika" Height="450" Width="800">
+    <StackPanel Orientation="Vertical" Name="MainStackPanel">
+        <Grid Height="30" Background="#FFADADAD">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="300"/>
+            </Grid.ColumnDefinitions>
+              <Label Content="Dodawanie użytkownika" Grid.Column="0" VerticalAlignment="Center" FontWeight="Bold" FontSize="16"></Label>
+            <Image Source="login_bg.jpg" Grid.Column="1" Stretch="UniformToFill" RenderTransformOrigin="0.5,0.5" >
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="-30"/>
+                        <RotateTransform/>
+                        <TranslateTransform X="-100"/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+        </Grid>
+
+        <Label Content="Nazwa użytkownika" Margin="10,5,5,5"></Label>
+        <TextBox Margin="5,5,5,5" Name="UserNameTextBox" Height="30"></TextBox>
+        <Label Content="Hasło" Margin="10,5,5,5"></Label>
+        <TextBox Margin="5,5,5,5" Name="PasswordTextBox" Height="30"></TextBox>
+        <Label Content="Powtórz hasło" Margin="10,5,5,5"></Label>
+        <TextBox Margin="5,5,5,5" Name="PasswordRepeatTextBox" Height="30"></TextBox>
+        <Separator Height="1" />
+        <CheckBox Content="Uprawnienie edycji użytkowników" Margin="10,5,5,5" Name="CanEditUsersCheckBox"></CheckBox>
+        <CheckBox Content="Uprawnienie edycji raportów" Margin="10,5,5,5" Name="CanEditReportsCheckBox"></CheckBox>
+        <CheckBox Content="Uprawnienie edycji kontrolowanych części" Margin="10,5,5,5" Name="CanEditPartsCheckBox"></CheckBox>
+        <CheckBox Content="Uprawnienie edycji typów defektów" Margin="10,5,5,5" Name="CanEditDefectTypesCheckBox"></CheckBox>
+
+        <Button Margin="10,5,5,5" Name="SaveUserButton" Content="Zapisz" Height="30" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Click="SaveUserButton_Click"></Button>
+
+    </StackPanel>
+</Window>

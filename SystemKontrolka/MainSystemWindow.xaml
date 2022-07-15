@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SystemKontrolka"
         mc:Ignorable="d"
-        Title="MainSystemWindow" Height="450" Width="800">
+        Title="System kontrolka" Height="450" Width="800" Loaded="Window_Loaded" IsVisibleChanged="Window_IsVisibleChanged">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -32,10 +32,44 @@
         </Grid>
         <TabControl  Grid.Row="1">
             <TabItem Header="Raporty">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+
+
+
+
+                </Grid>
             </TabItem>
             <TabItem Header="Użytkownicy">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Button x:Name="AddUserButton" Content="Dodaj użytkownika"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="5,5,0,0"
+                 Padding="5,5,5,5"
+                Height="30"
+                Grid.Row="0" Click="AddUserButton_Click" 
+                 />
+                    <DataGrid  Grid.Row="1" x:Name="UsersDataGrid"
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Top"
+                  Margin="0,0,0,0" AlternatingRowBackground="#FFB9B9B9" IsReadOnly="True"
+                  
+                 
+                  >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID"  />
+                            <DataGridTextColumn Header="Login"  />
+                            <DataGridTextColumn Header="Uprawnienie"  />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -32,7 +33,14 @@ namespace SystemKontrolka
             
             services.AddSingleton<LoginWindow>();
             services.AddSingleton<MainSystemWindow>();
+            services.AddSingleton<AddUserWindow>();
+            services.AddSingleton<UsersTab>();
             services.AddTransient<IServiceProvider>((c) => serviceProvider);
+
+            services.AddDbContext<KontrolkaDbContext>(options =>
+            {
+                options.UseSqlite("Data Source = Kontrolka.db");
+            });
         }
         
         /// <summary>
@@ -42,6 +50,8 @@ namespace SystemKontrolka
         /// <param name="e">The event</param>
         private void OnStartup(object sender, StartupEventArgs e)
         {
+            var dbContext = serviceProvider.GetService<KontrolkaDbContext>();
+            dbContext.Database.Migrate();
             var loginWindow = serviceProvider.GetService<LoginWindow>();
             loginWindow.Show();
         }

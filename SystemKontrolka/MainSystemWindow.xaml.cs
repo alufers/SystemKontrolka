@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SystemKontrolka.Services;
 
 namespace SystemKontrolka
 {
@@ -21,10 +23,13 @@ namespace SystemKontrolka
     public partial class MainSystemWindow : Window
     {
         private readonly IServiceProvider _serviceProvider;
-            
-        public MainSystemWindow(IServiceProvider serviceProvider)
+        private readonly AddUserWindow _addUserWindow;
+        private readonly KontrolkaDbContext _kontrolkaDbContext;
+        public MainSystemWindow(IServiceProvider serviceProvider, AddUserWindow addUserWindow, KontrolkaDbContext kontrolkaDbContext)
         {
             _serviceProvider = serviceProvider;
+            _addUserWindow = addUserWindow;
+            _kontrolkaDbContext = kontrolkaDbContext;
             InitializeComponent();
         }
 
@@ -38,6 +43,32 @@ namespace SystemKontrolka
         {
             _serviceProvider.GetService<LoginWindow>().Show();
             Hide();
+        }
+
+        private void AddUserButton_Click(object sender, RoutedEventArgs e)
+        {
+            _addUserWindow.Show();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            LoadUsers();
+        }
+
+        private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            LoadUsers();
+        }
+
+        /// <summary>
+        /// Loads the users list from the database
+        /// </summary>
+        /// <returns></returns>
+        public async Task LoadUsers()
+        {
+            var users = await _kontrolkaDbContext.Users.ToListAsync();
+            UsersDataGrid.ItemsSource = users;
         }
     }
 }
