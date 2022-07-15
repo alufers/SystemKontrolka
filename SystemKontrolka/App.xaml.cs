@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,32 @@ namespace SystemKontrolka
     /// </summary>
     public partial class App : Application
     {
+        private ServiceProvider serviceProvider;
+        public App()
+        {
+            ServiceCollection services = new ServiceCollection();
+            ConfigureServices(services);
+            serviceProvider = services.BuildServiceProvider();
+        }
+        /// <summary>
+        /// Adds services to the ServiceCollection for later dependency injection.
+        /// </summary>
+        /// <param name="services"></param>
+        private void ConfigureServices(ServiceCollection services)
+        {
+          
+            services.AddSingleton<LoginWindow>();
+        }
+        
+        /// <summary>
+        /// An event handler for application startup
+        /// </summary>
+        /// <param name="sender">The app</param>
+        /// <param name="e">The event</param>
+        private void OnStartup(object sender, StartupEventArgs e)
+        {
+            var loginWindow = serviceProvider.GetService<LoginWindow>();
+            loginWindow.Show();
+        }
     }
 }
