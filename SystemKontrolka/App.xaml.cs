@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using SystemKontrolka.Services;
 
 namespace SystemKontrolka
 {
@@ -27,6 +28,7 @@ namespace SystemKontrolka
         /// <param name="services"></param>
         private void ConfigureServices(ServiceCollection services)
         {
+            services.AddScoped<ILoginService, DbLoginService>();
           
             services.AddSingleton<LoginWindow>();
         }

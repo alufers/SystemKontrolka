@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\alufers\source\repos\SystemKontrolka\SystemKontrolka\App.xaml
-1-1623698816
+2-1671733954
 1-1897442319
-5-727200557
+8-987989015
 196829398718
-LoginWindow.xaml;
+LoginWindow.xaml;MainSystemWindow.xaml;
 
 True
 

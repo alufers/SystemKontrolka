@@ -12,17 +12,62 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SystemKontrolka.Services;
+
 
 namespace SystemKontrolka
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for LoginWindow.xaml
     /// </summary>
     public partial class LoginWindow : Window
     {
-        public LoginWindow()
+
+        private readonly ILoginService _loginService;
+
+        
+        
+        public LoginWindow(ILoginService loginService)
         {
+            _loginService = loginService;
             InitializeComponent();
         }
+
+        /// <summary>
+        /// Handles keypresses in text fields, checks for enter and continues login whenenter was pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void login_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Return)
+            {
+                DoLogin();
+            }
+        }
+
+        /// <summary>
+        /// Click handler for the login button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            DoLogin();
+        }
+
+        private async Task DoLogin()
+        {
+            if (await _loginService.CheckUserCredentials(login.Text, password.Password))
+            {
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Niepoprawne dane logowania!");
+            }
+        }
+
+        
     }
 }
