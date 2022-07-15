@@ -69,6 +69,7 @@ namespace SystemKontrolka
             {
                 login.Text = "";
                 password.Password = "";
+                await _loginService.CreateLoginHistoryEntry(user, "Zalogowano!");
                 Hide();
                 _mainSystemWindow.LoginAndShow(user);
             }

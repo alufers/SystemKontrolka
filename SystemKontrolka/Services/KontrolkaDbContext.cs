@@ -20,6 +20,16 @@ namespace SystemKontrolka.Services
         /// </summary>
         public DbSet<User> Users { get; set; }
 
+        /// <summary>
+        /// This is the dbset of login history entries
+        /// </summary>
+        public DbSet<LoginHistoryEntry> loginHistoryEntries { get; set; }
+
+        /// <summary>
+        /// This is the dbset of parts
+        /// </summary>
+        public DbSet<Part> Parts { get; set; }
+
         public KontrolkaDbContext(DbContextOptions<KontrolkaDbContext> options) : base(options)
         {
          

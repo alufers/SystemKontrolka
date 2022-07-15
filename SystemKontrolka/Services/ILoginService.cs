@@ -27,5 +27,13 @@ namespace SystemKontrolka.Services
         /// <returns>if created the account</returns>
         public Task<bool> CreateAdminUserIfNone();
 
+        /// <summary>
+        /// Adds an action for a user to his login history.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public Task CreateLoginHistoryEntry(User user, String action);
+
     }
 }

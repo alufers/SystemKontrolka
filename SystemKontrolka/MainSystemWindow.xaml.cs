@@ -26,13 +26,14 @@ namespace SystemKontrolka
         private readonly IServiceProvider _serviceProvider;
         private readonly AddUserWindow _addUserWindow;
         private readonly KontrolkaDbContext _kontrolkaDbContext;
+        private ILoginService _loginService;
         private User _user;
-        
-        public MainSystemWindow(IServiceProvider serviceProvider, AddUserWindow addUserWindow, KontrolkaDbContext kontrolkaDbContext)
+        public MainSystemWindow(IServiceProvider serviceProvider, AddUserWindow addUserWindow, KontrolkaDbContext kontrolkaDbContext, ILoginService loginService)
         {
             _serviceProvider = serviceProvider;
             _addUserWindow = addUserWindow;
             _kontrolkaDbContext = kontrolkaDbContext;
+            _loginService = loginService;
             InitializeComponent();
         }
 
@@ -57,6 +58,12 @@ namespace SystemKontrolka
         /// <param name="e"></param>
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
+            SaveLogoutAndExit();
+        }
+
+        private async Task SaveLogoutAndExit()
+        {
+            await _loginService.CreateLoginHistoryEntry(_user, "Wylogowano!");
             Hide();
             Application.Current.Shutdown();
         }
@@ -70,11 +77,13 @@ namespace SystemKontrolka
         {
 
             LoadUsers();
+            LoadLoginHistory();
         }
 
         private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             LoadUsers();
+            LoadLoginHistory();
         }
 
         /// <summary>
@@ -85,6 +94,12 @@ namespace SystemKontrolka
         {
             var users = await _kontrolkaDbContext.Users.ToListAsync();
             UsersDataGrid.ItemsSource = users;
+        }
+
+        public async Task LoadLoginHistory()
+        {
+            var loginHistory = await _kontrolkaDbContext.loginHistoryEntries.Include(l => l.User).ToListAsync();
+            LogsDataGrid.ItemsSource = loginHistory;
         }
 
         private void Window_Closed(object sender, EventArgs e)

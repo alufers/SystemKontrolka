@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 namespace SystemKontrolka.Models
 {
-    internal class Part
+    public class Part
     {
         [DisplayName("ID")]
         public int Id { get; set; }

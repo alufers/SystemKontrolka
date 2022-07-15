@@ -82,6 +82,31 @@
                     </DataGrid>
                 </Grid>
             </TabItem>
+            <TabItem Header="Historia logowania">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*
+                                       "></RowDefinition>
+                        
+                    </Grid.RowDefinitions>
+                    <DataGrid  Grid.Row="1" x:Name="LogsDataGrid"
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Top"
+                  Margin="0,0,0,0" 
+                               AlternatingRowBackground="#FFB9B9B9" 
+                        IsReadOnly="True"
+                  AutoGenerateColumns="False"
+           
+                  >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Użytkownik" Binding="{Binding User.Username}" />
+                            <DataGridTextColumn Header="Data" Binding="{Binding Date}"/>
+                            <DataGridTextColumn Header="Akcja" Binding="{Binding Action}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

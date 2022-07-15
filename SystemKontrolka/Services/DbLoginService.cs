@@ -43,5 +43,17 @@ namespace SystemKontrolka.Services
             }
             return false;
         }
+
+        public async Task CreateLoginHistoryEntry(User user, String action)
+        {
+            var loginHistory = new LoginHistoryEntry
+            {
+                User = user,
+                Date = DateTime.Now,
+                Action = action
+            };
+            _kontrolkaDbContext.loginHistoryEntries.Add(loginHistory);
+            await _kontrolkaDbContext.SaveChangesAsync();
+        }
     }
 }
