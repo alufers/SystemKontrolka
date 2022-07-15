@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>assets\logo_sm.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="login_bg.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="assets\logo_sm.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="login_bg.jpg" />
+  </ItemGroup>
+
+</Project>
