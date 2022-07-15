@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,24 @@ namespace SystemKontrolka
     /// </summary>
     public partial class MainSystemWindow : Window
     {
-        public MainSystemWindow()
+        private readonly IServiceProvider _serviceProvider;
+            
+        public MainSystemWindow(IServiceProvider serviceProvider)
         {
+            _serviceProvider = serviceProvider;
             InitializeComponent();
+        }
+
+
+        /// <summary>
+        /// Handles a click on the logout button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            _serviceProvider.GetService<LoginWindow>().Show();
+            Hide();
         }
     }
 }

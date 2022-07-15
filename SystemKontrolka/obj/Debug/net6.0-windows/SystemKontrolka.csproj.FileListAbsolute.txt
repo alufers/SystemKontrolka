@@ -23,3 +23,5 @@ C:\Users\alufers\source\repos\SystemKontrolka\SystemKontrolka\obj\Debug\net6.0-w
 C:\Users\alufers\source\repos\SystemKontrolka\SystemKontrolka\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\alufers\source\repos\SystemKontrolka\SystemKontrolka\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\alufers\source\repos\SystemKontrolka\SystemKontrolka\obj\Debug\net6.0-windows\SystemKontrolka.csproj.CopyComplete
+C:\Users\alufers\source\repos\SystemKontrolka\SystemKontrolka\obj\Debug\net6.0-windows\MainSystemWindow.g.cs
+C:\Users\alufers\source\repos\SystemKontrolka\SystemKontrolka\obj\Debug\net6.0-windows\MainSystemWindow.baml

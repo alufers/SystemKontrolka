@@ -7,6 +7,36 @@
         mc:Ignorable="d"
         Title="MainSystemWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="#FF50F188">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="80"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Jesteś zalogowany jako:" Grid.Column="0"></Label>
+            <Image Source="/login_bg.jpg" Grid.Column="1" Stretch="UniformToFill" RenderTransformOrigin="0.5,0.5" >
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="-30"/>
+                        <RotateTransform/>
+                        <TranslateTransform X="-120"/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Button x:Name="LogoutButton" Content="Wyloguj" Grid.Column="2" Click="LogoutButton_Click"></Button>
+        </Grid>
+        <TabControl  Grid.Row="1">
+            <TabItem Header="Raporty">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Użytkownicy">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

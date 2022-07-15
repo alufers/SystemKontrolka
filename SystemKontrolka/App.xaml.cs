@@ -29,8 +29,10 @@ namespace SystemKontrolka
         private void ConfigureServices(ServiceCollection services)
         {
             services.AddScoped<ILoginService, DbLoginService>();
-          
+            
             services.AddSingleton<LoginWindow>();
+            services.AddSingleton<MainSystemWindow>();
+            services.AddTransient<IServiceProvider>((c) => serviceProvider);
         }
         
         /// <summary>

@@ -24,12 +24,14 @@ namespace SystemKontrolka
     {
 
         private readonly ILoginService _loginService;
+        private readonly MainSystemWindow _mainSystemWindow;
 
-        
-        
-        public LoginWindow(ILoginService loginService)
+
+
+        public LoginWindow(ILoginService loginService, MainSystemWindow mainSystemWindow)
         {
             _loginService = loginService;
+            _mainSystemWindow = mainSystemWindow;
             InitializeComponent();
         }
 
@@ -60,7 +62,8 @@ namespace SystemKontrolka
         {
             if (await _loginService.CheckUserCredentials(login.Text, password.Password))
             {
-                Close();
+                Hide();
+                _mainSystemWindow.Show();
             }
             else
             {
