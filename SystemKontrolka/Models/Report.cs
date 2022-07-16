@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 namespace SystemKontrolka.Models
 {
+    
+
+  
+    
     public class Report
     {
         [DisplayName("ID")]
@@ -14,7 +18,11 @@ namespace SystemKontrolka.Models
 
         public DateTime Date { get; set; }
 
-        [DisplayName("Waga")]
-        public float Weight { get; set; }
+        public string Description { get; set; }
+
+        public User User { get; set; }
+
+        public Part Part { get; set; }
+
     }
 }

@@ -30,6 +30,11 @@ namespace SystemKontrolka.Services
         /// </summary>
         public DbSet<Part> Parts { get; set; }
 
+        /// <summary>
+        /// This is the dbset of reports
+        /// </summary>
+        public DbSet<Report> Reports { get; set; }
+
         public KontrolkaDbContext(DbContextOptions<KontrolkaDbContext> options) : base(options)
         {
          

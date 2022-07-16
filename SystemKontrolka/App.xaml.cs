@@ -35,6 +35,7 @@ namespace SystemKontrolka
             services.AddSingleton<MainSystemWindow>();
             services.AddSingleton<AddUserWindow>();
             services.AddSingleton<UsersTab>();
+            services.AddSingleton<AddReportWindow>();
             services.AddTransient<IServiceProvider>((c) => serviceProvider);
 
             services.AddDbContext<KontrolkaDbContext>(options =>

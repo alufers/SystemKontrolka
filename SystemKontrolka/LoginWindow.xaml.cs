@@ -106,9 +106,17 @@ namespace SystemKontrolka
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private async Task CheckAdminAccount() {
+            try { 
+            
+            
             if (await _loginService.CreateAdminUserIfNone())
             {
                 MessageBox.Show("Utworzono konto administratora: admin/admin");
+            }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

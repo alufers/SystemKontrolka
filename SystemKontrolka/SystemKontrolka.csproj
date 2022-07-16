@@ -29,4 +29,8 @@
     <Resource Include="login_bg.jpg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

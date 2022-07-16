@@ -62,3 +62,5 @@ C:\Users\alufers\source\repos\SystemKontrolka\SystemKontrolka\obj\Debug\net6.0-w
 C:\Users\alufers\source\repos\SystemKontrolka\SystemKontrolka\obj\Debug\net6.0-windows\AddUserWindow.baml
 C:\Users\alufers\source\repos\SystemKontrolka\SystemKontrolka\bin\Debug\net6.0-windows\Humanizer.dll
 C:\Users\alufers\source\repos\SystemKontrolka\SystemKontrolka\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\alufers\source\repos\SystemKontrolka\SystemKontrolka\obj\Debug\net6.0-windows\AddReportWindow.g.cs
+C:\Users\alufers\source\repos\SystemKontrolka\SystemKontrolka\obj\Debug\net6.0-windows\AddReportWindow.baml

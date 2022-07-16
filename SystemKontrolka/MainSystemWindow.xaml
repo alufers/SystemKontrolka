@@ -46,7 +46,37 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Raporty">
-                <Grid Background="#FFE5E5E5"></Grid>
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Button x:Name="AddReportButton" Content="Dodaj raport"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Margin="5,5,0,0"
+                         Padding="5,5,5,5"
+                        Height="30"
+                        Grid.Row="0" Click="AddReportButton_Click"
+                 />
+                    <DataGrid  Grid.Row="1" x:Name="ReportsDataGrid"
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Top"
+                  Margin="0,0,0,0" 
+                               AlternatingRowBackground="#FFB9B9B9" 
+                        IsReadOnly="True"
+                  AutoGenerateColumns="False"
+           
+                  >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Opis" Binding="{Binding Description}" />
+                            <DataGridTextColumn Header="Data" Binding="{Binding Date}"/>
+                            <DataGridTextColumn Header="Część" Binding="{Binding Part.Name}"/>
+                            <DataGridTextColumn Header="Autor" Binding="{Binding User.Username}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
             </TabItem>
             <TabItem Header="Części">
                 <Grid Background="#FFE5E5E5">
@@ -72,12 +102,12 @@
                         <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Button x:Name="AddUserButton" Content="Dodaj użytkownika"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Margin="5,5,0,0"
-                 Padding="5,5,5,5"
-                Height="30"
-                Grid.Row="0" Click="AddUserButton_Click" 
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Margin="5,5,0,0"
+                         Padding="5,5,5,5"
+                        Height="30"
+                        Grid.Row="0" Click="AddUserButton_Click" 
                  />
                     <DataGrid  Grid.Row="1" x:Name="UsersDataGrid"
                   HorizontalAlignment="Stretch"

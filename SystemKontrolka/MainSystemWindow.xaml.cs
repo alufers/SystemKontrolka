@@ -26,14 +26,17 @@ namespace SystemKontrolka
         private readonly IServiceProvider _serviceProvider;
         private readonly AddUserWindow _addUserWindow;
         private readonly KontrolkaDbContext _kontrolkaDbContext;
+        private readonly AddReportWindow _addReportWindow;
         private ILoginService _loginService;
         private User _user;
-        public MainSystemWindow(IServiceProvider serviceProvider, AddUserWindow addUserWindow, KontrolkaDbContext kontrolkaDbContext, ILoginService loginService)
+        public MainSystemWindow(IServiceProvider serviceProvider, AddUserWindow addUserWindow,
+            KontrolkaDbContext kontrolkaDbContext, ILoginService loginService, AddReportWindow addReportWindow)
         {
             _serviceProvider = serviceProvider;
             _addUserWindow = addUserWindow;
             _kontrolkaDbContext = kontrolkaDbContext;
             _loginService = loginService;
+            _addReportWindow = addReportWindow;
             InitializeComponent();
         }
 
@@ -79,6 +82,7 @@ namespace SystemKontrolka
             LoadUsers();
             LoadLoginHistory();
             LoadPartTypes();
+            LoadReports();
         }
 
         private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -86,6 +90,7 @@ namespace SystemKontrolka
             LoadUsers();
             LoadLoginHistory();
             LoadPartTypes();
+            LoadReports();
         }
 
         /// <summary>
@@ -113,6 +118,16 @@ namespace SystemKontrolka
             var partTypes = await _kontrolkaDbContext.Parts.ToListAsync();
             PartTypesDataGrid.ItemsSource = partTypes;
         }
+        
+        /// <summary>
+        /// Loads reports from the database to the datagrid
+        /// </summary>
+        /// <returns></returns>
+        public async Task LoadReports()
+        {
+            var reports = await _kontrolkaDbContext.Reports.Include(l => l.Part).Include(l => l.User).ToListAsync();
+            ReportsDataGrid.ItemsSource = reports;
+        }
 
         private void Window_Closed(object sender, EventArgs e)
         {
@@ -125,7 +140,7 @@ namespace SystemKontrolka
             if (e.EditAction == DataGridEditAction.Commit)
             {
                 var _part = e.Row.Item as Part;
-               if(_part.Id == 0)
+                if (_part.Id == 0)
                 {
                     _kontrolkaDbContext.Parts.Add(_part);
                 }
@@ -136,6 +151,16 @@ namespace SystemKontrolka
                 await _kontrolkaDbContext.SaveChangesAsync();
                 await LoadPartTypes();
             }
+        }
+
+        /// <summary>
+        /// Shows the add report window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AddReportButton_Click(object sender, RoutedEventArgs e)
+        {
+            _addReportWindow.ShowForUser(_user);
         }
     }
 }
