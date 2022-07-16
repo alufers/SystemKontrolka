@@ -48,6 +48,23 @@
             <TabItem Header="Raporty">
                 <Grid Background="#FFE5E5E5"></Grid>
             </TabItem>
+            <TabItem Header="Części">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid  Grid.Row="1" x:Name="PartTypesDataGrid"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Top"
+                               AutoGenerateColumns="false"
+                                Margin="0,0,0,0" 
+                                AlternatingRowBackground="#FFB9B9B9" RowEditEnding="PartTypesDataGrid_EditEnding" 
+                  >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Nazwa" Binding="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+                            <DataGridTextColumn Header="Waga"   Binding="{Binding Weight, StringFormat=\{0:N0\}, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
             <TabItem Header="Użytkownicy">
                 <Grid Background="#FFE5E5E5">
                     <Grid.RowDefinitions>
@@ -87,7 +104,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*
                                        "></RowDefinition>
-                        
+
                     </Grid.RowDefinitions>
                     <DataGrid  Grid.Row="1" x:Name="LogsDataGrid"
                   HorizontalAlignment="Stretch"

@@ -78,12 +78,14 @@ namespace SystemKontrolka
 
             LoadUsers();
             LoadLoginHistory();
+            LoadPartTypes();
         }
 
         private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             LoadUsers();
             LoadLoginHistory();
+            LoadPartTypes();
         }
 
         /// <summary>
@@ -102,9 +104,38 @@ namespace SystemKontrolka
             LogsDataGrid.ItemsSource = loginHistory;
         }
 
+        /// <summary>
+        /// Loads part types from the database to the Datagrid
+        /// </summary>
+        /// <returns></returns>
+        public async Task LoadPartTypes()
+        {
+            var partTypes = await _kontrolkaDbContext.Parts.ToListAsync();
+            PartTypesDataGrid.ItemsSource = partTypes;
+        }
+
         private void Window_Closed(object sender, EventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private async void PartTypesDataGrid_EditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        {
+
+            if (e.EditAction == DataGridEditAction.Commit)
+            {
+                var _part = e.Row.Item as Part;
+               if(_part.Id == 0)
+                {
+                    _kontrolkaDbContext.Parts.Add(_part);
+                }
+                else
+                {
+                    _kontrolkaDbContext.Parts.Update(_part);
+                }
+                await _kontrolkaDbContext.SaveChangesAsync();
+                await LoadPartTypes();
+            }
         }
     }
 }
