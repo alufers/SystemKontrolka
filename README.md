@@ -31,3 +31,37 @@ Po zalogowaniu zobaczymy ekran powitalny:
 
 Pierwszą rzeczą jaką będzie musiał zrobić administrator systemu jest stwrozenie kont dla poszczególnych pracowników firmy. Takie zadanie można wykonań w zakładce "Użytkownicy".
 
+![image](https://user-images.githubusercontent.com/5400940/179348788-0859f3a5-36f9-4dd0-a573-0d0b57f4a287.png)
+
+W tej zakładce można wylistować wszystkich użytkowników oraz stworzyć nowego.
+
+### Kontrola logowania
+
+W ostatniej zakładce istnieje możliwość podglądu historii logowania i wylogowania wszystkich użytkowników w systemie.
+
+![image](https://user-images.githubusercontent.com/5400940/179348839-cf0c4aae-1e98-49db-9ecb-cc83597cbd94.png)
+
+### Definicje części
+
+W zakładce "Części" można zdefiniować nazwy i wagi części, które będą sprawdzane w systemie.
+
+![image](https://user-images.githubusercontent.com/5400940/179348884-3d9f959b-0b7a-40c5-85c9-9d9a96456571.png)
+
+Pola edytujemy klikając podwójnie, można dodać wiersz wybierając ostatni - pusty - wiersz.
+
+### Raporty
+
+W zakładce "Raporty" istnieje możliwość wylistowania i stworzenia raportów kontroli jakości.
+
+![image](https://user-images.githubusercontent.com/5400940/179348924-3894d211-cd9a-40fe-8051-09575d7acd67.png)
+
+Przy dodawaniu raportu widzimy spodziewaną masę danej części, więc możemy ją porównać.
+
+![image](https://user-images.githubusercontent.com/5400940/179348931-cd6aab47-1d7c-4778-b460-a2eef0fa3b5d.png)
+
+
+
+### 
+
+
+
