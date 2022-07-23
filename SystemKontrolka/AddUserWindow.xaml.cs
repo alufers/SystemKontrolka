@@ -93,5 +93,16 @@ namespace SystemKontrolka
 
 
         }
+
+        /// <summary>
+        /// Handles the window closing event, hides the window instedad of removing it.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            this.Hide();
+        }
     }
 }

@@ -35,6 +35,11 @@ namespace SystemKontrolka
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Handles the IsVisibleChanged of the window and loads the data for the combo box.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             LoadPartsOptions();
@@ -59,6 +64,11 @@ namespace SystemKontrolka
             PartSelectionComboBox.ItemsSource = parts;
         }
 
+        /// <summary>
+        /// Handles the SelectionChanged event from the combo box and displays the 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PartSelectionComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (PartSelectionComboBox.SelectedItem != null)
@@ -99,6 +109,17 @@ namespace SystemKontrolka
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        /// <summary>
+        /// Handles the window closing event, hides the window instedad of removing it.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            this.Hide();
         }
     }
 }

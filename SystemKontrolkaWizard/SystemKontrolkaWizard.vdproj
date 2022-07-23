@@ -21,6 +21,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_1ECAA3FC10BE48D985D97823951AF9A7"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_EEE0936E6FB0452B9523E3A39CF39C35"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -82,6 +88,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
     }
@@ -118,6 +132,26 @@
             {
             "SourcePath" = "8:..\\SystemKontrolka\\login_bg.jpg"
             "TargetName" = "8:login_bg.jpg"
+            "Tag" = "8:"
+            "Folder" = "8:_A84E298BEADD4D8ABEAB2F2418703808"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1ECAA3FC10BE48D985D97823951AF9A7"
+            {
+            "SourcePath" = "8:..\\SystemKontrolka\\bin\\Release\\net6.0-windows\\SystemKontrolka.exe"
+            "TargetName" = "8:SystemKontrolka.exe"
             "Tag" = "8:"
             "Folder" = "8:_A84E298BEADD4D8ABEAB2F2418703808"
             "Condition" = "8:"
@@ -191,7 +225,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:SystemKontrolkaWizard"
         "ProductCode" = "8:{29BD146D-1B51-49EF-9E59-2D4AC08ECD1F}"
-        "PackageCode" = "8:{14F43FAB-BFEB-4B7E-AE50-AD7427BF526E}"
+        "PackageCode" = "8:{4F9E6E99-A13F-4A6F-B44D-A65CFDB2B6E1}"
         "UpgradeCode" = "8:{58190324-8F0D-4B8E-9A15-21ADF6EF83F7}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -311,17 +345,31 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_4130A63D58774DBA9E09EDBA138395EE"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_26EACC88F8864EB3AF4F6E052E98B62C"
             {
-            "Name" = "8:SystemKontrolka"
+            "Name" = "8:System Kontrolka"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_BE792AE417AC4221928F58F45C31DC9A"
+            "Target" = "8:_1ECAA3FC10BE48D985D97823951AF9A7"
+            "Folder" = "8:_69CB600DC39049AF813D4A8D53392F32"
+            "WorkingFolder" = "8:_A84E298BEADD4D8ABEAB2F2418703808"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_AEB69201AA2045558058DDC9B4BF42DD"
+            {
+            "Name" = "8:System kontrolka"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_1ECAA3FC10BE48D985D97823951AF9A7"
             "Folder" = "8:_BE792AE417AC4221928F58F45C31DC9A"
-            "WorkingFolder" = "8:_BE792AE417AC4221928F58F45C31DC9A"
+            "WorkingFolder" = "8:_A84E298BEADD4D8ABEAB2F2418703808"
             "Icon" = "8:"
             "Feature" = "8:"
             }
@@ -1006,7 +1054,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_EEE0936E6FB0452B9523E3A39CF39C35"
             {
-            "SourcePath" = "8:..\\SystemKontrolka\\obj\\Debug\\net6.0-windows\\SystemKontrolka.dll"
+            "SourcePath" = "8:..\\SystemKontrolka\\obj\\Release\\net6.0-windows\\SystemKontrolka.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_A84E298BEADD4D8ABEAB2F2418703808"
